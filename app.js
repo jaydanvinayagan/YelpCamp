@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -10,16 +11,15 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     seedDB      = require("./seeds.js");
+   
 
 // requring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes        = require("./routes/index")
 
-
-mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://Jaydan:marley2018@ds131711.mlab.com:31711/yelpcamp");
-
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v9"; // backup database
+mongoose.connect(url);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname +"/public"))
@@ -30,7 +30,7 @@ app.use(flash());
 // see the database
 //seedDB();
 
-
+app.locals.moment = require('moment')
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret:"Marley is a Good Boy",
