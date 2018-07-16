@@ -1,10 +1,15 @@
 <% include ../partials/header %>
 
+
 <div class="row">
   <div class="col-md-3">
-    <div id="map"></div>
+    <div class = "card">
+      <h5 class="card-title" style="text-align: center;" >Map location</h5>
+      <div id="map"></div>
+    </div>
   </div>
   <div class="col-md-9">
+    <h1 class="card-title" style="text-align: center;" ><%= campground.name %></h1>
     <div class="card mb-3">
       <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
       <div class="card-body">
@@ -17,12 +22,14 @@
         </p>
         <hr>
         <p class="card-text"><%= campground.description %></p>
+        
         <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="delete-form">
-          <button class="btn btn-danger">Delete</button>
-        </form>
+            <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+            <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="delete-form">
+              <button class="btn btn-danger">Delete</button>
+            </form>
         <% } %>
+        
       </div>
     </div>
     <div class="card">
