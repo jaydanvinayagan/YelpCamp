@@ -17,12 +17,12 @@ This is a Node.js Web Application which is a Camp-Themed version of Yelp, a crow
 * Google Geocoding API
 * Google Maps JavaScript API
 
-##Front-end features
+## Front-end features
 * Bootstrap
 * ejs
 
 
-##Back-end features
+## Back-end features
 * Express
 * MongoDB
 * Mongoose
